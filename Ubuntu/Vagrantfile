@@ -1,0 +1,19 @@
+# VMWare XFCE4 Ubuntu 20.04 Config
+Vagrant.configure("2") do |config|
+
+    config.vm.box = "generic/ubuntu2004"
+    config.vm.define "Ubuntu 20.04 XFCE"
+    config.vm.hostname ="ubsvm"
+    config.vm.provider "vmware_desktop" do |v|
+      v.gui = true
+      v.vmx["memsize"] = "4096"
+      v.vmx["numvcpus"] = "6"
+    end
+  
+    config.vm.provision "shell", inline: <<-SHELL
+      apt-get update
+      apt-get install -y xfce4 
+      reboot now
+    SHELL
+  end
+  
