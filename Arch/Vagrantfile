@@ -1,0 +1,18 @@
+# VMWare Arch archiso building config
+Vagrant.configure("2") do |config|
+
+    config.vm.box = "generic/arch"
+    config.vm.define "Arch Build VM"
+    config.vm.hostname ="arcvm"
+    config.vm.provider "vmware_desktop" do |v|
+      v.gui = true
+      v.vmx["memsize"] = "8196"
+      v.vmx["numvcpus"] = "8"
+    end
+  
+    config.vm.provision "shell", inline: <<-SHELL
+      pacman -Syyu --noconfirm
+      pacman -S archiso --noconfirm
+      reboot now
+    SHELL
+  end
