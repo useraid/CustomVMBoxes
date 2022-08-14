@@ -19,6 +19,9 @@ Custom Vagrant deployments of my VMs.
 - Arch 
     - `archiso` ISO builder
 
+- Debian
+    - Media Server (based on [useraid/AutomatedMediaSrv](https://github.com/useraid/AutomatedMediaSrv))
+
 ### Desktop Environments 
 
 - Ubuntu
